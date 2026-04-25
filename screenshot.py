@@ -47,7 +47,7 @@ def main():
     time.sleep(5)
 
     # スクショ
-    screenshot(dir_path, args.direction, args.pages)
+    screenshot(dir_path, args.direction, args.pages, args.wait)
 
     print(f">>> 撮影が完了しました。")
     print(f"デスクトップの '{OUTPUT_FOLDER}' フォルダに画像が保存されました。")
