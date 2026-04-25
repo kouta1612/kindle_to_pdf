@@ -17,7 +17,7 @@ python3 ./screenshot.py
 オプション指定版
 
 ```terminal
-python3 ./screenshot.py -d right -p 500
+python3 ./screenshot.py -d right -p 500 -t 1
 ```
 
 ## PDF 作成

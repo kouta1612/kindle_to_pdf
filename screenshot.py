@@ -4,18 +4,14 @@ import pyautogui
 import time
 import os
 
-# --- ここを編集してください ---
 # スクリーンショットを保存するフォルダ名
 OUTPUT_FOLDER = "book_screenshots"
-
-# 1ページあたりの待機時間（秒）。PCの動作が遅い場合は長めに設定
-WAIT_TIME = 0.5
-# -----------------------------
 
 def get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument('--direction', '-d', default='left', choices=['left', 'right'], type=str)
     parser.add_argument('--pages', '-p', type=int, default=300)
+    parser.add_argument('--wait', '-t', type=int, default=0.5)
 
     return parser.parse_args()
 
@@ -26,7 +22,7 @@ def create_dir(folder_name: str) -> str:
         os.makedirs(output_dir)
     return output_dir
 
-def screenshot(dir_path, direction: str, pages: int):
+def screenshot(dir_path, direction: str, pages, wait: int):
     for i in range(pages):
         page = i + 1
         print(f">>> {page} / {pages} ページ目を撮影中...")
@@ -36,7 +32,7 @@ def screenshot(dir_path, direction: str, pages: int):
         screenshot.save(file_path)
 
         pyautogui.press(direction) 
-        time.sleep(WAIT_TIME)
+        time.sleep(wait)
 
 def main():
     # 引数の取得
