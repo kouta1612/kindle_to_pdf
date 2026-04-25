@@ -11,17 +11,17 @@ pip3 install -r requirements.txt
 デフォルト版
 
 ```terminal
-python ./screenshot.py
+python3 ./screenshot.py
 ```
 
 オプション指定版
 
 ```terminal
-python ./screenshot.py -d right -p 500
+python3 ./screenshot.py -d right -p 500
 ```
 
 ## PDF 作成
 
 ```terminal
-python ./create_pdf.py
+python3 ./create_pdf.py
 ```
