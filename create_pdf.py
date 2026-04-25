@@ -1,3 +1,4 @@
+from contextlib import redirect_stderr
 import os
 import img2pdf
 from datetime import datetime
@@ -25,7 +26,9 @@ def create_pdf(folder, filename: str):
     if images:
         output_path = os.path.join(output_dir, filename)
         with open(output_path, "wb") as f:
-            f.write(img2pdf.convert(images))
+            with open(os.devnull, "w") as devnull:
+                with redirect_stderr(devnull): # ライブラリ警告ログ削除
+                    f.write(img2pdf.convert(images)) # PDFに変換
         print("PDFが完成しました。")
 
 def main():
