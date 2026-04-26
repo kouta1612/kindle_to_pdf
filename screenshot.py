@@ -1,8 +1,8 @@
 import argparse
-
 import pyautogui
 import time
 import os
+from datetime import datetime
 
 # スクリーンショットを保存するフォルダ名
 OUTPUT_FOLDER = "book_screenshots"
@@ -27,12 +27,15 @@ def screenshot(dir_path, direction: str, pages, wait: int):
         page = i + 1
         print(f">>> {page} / {pages} ページ目を撮影中...")
 
-        screenshot = pyautogui.screenshot()
-        file_path = os.path.join(dir_path, f"page_{page:04d}.png")
-        screenshot.save(file_path)
+        file_path = os.path.join(dir_path, get_filename())
 
+        pyautogui.screenshot().save(file_path)
         pyautogui.press(direction) 
         time.sleep(wait)
+
+def get_filename() -> str:
+    filename = datetime.now().strftime("%Y%m%d%H%M%S%f")
+    return filename + ".png"
 
 def main():
     # 引数の取得
